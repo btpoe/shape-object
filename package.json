@@ -1,0 +1,11 @@
+{
+	"name": "shape-object",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"author": {
+		"name": "Brandon Poe",
+		"email": "brandonpoe@me.com",
+		"url": "https://github.com/btpoe"
+	}
+}
