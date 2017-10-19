@@ -4,20 +4,20 @@ function parseGraph(str) {
     var parts = str.match(/[^\s,{}]+|{|}/g);
     var part;
     var lastPart;
-    var superParent;
-    var parentRef = res;
+    var refStack = [res];
 
     while (part = parts.shift()) {
         switch (part) {
             case '{':
-                superParent = parentRef;
-                parentRef = lastPart ? (parentRef[lastPart] = {}) : res;
+                if (lastPart) {
+                    refStack.unshift(refStack[0][lastPart] = {});
+                }
                 break;
             case '}':
-                parentRef = superParent;
+                refStack.shift();
                 break;
             default:
-                parentRef[part] = null;
+                refStack[0][part] = null;
                 break;
         }
 
